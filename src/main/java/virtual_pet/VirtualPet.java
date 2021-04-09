@@ -5,13 +5,12 @@ import java.util.Scanner;
 
 public class VirtualPet {
     private String name;
-    private int thirst = 100;
-    private boolean waste;
-    private boolean boredom;
-    private boolean sickness;
+    private int thirst = 0;
+    private int waste = 0;
+    private int boredom = 0;
     private int food = 100;
     private int health = 100;
-    private int crap = 0;
+    private int tired = 0;
     private String menuOption = "0";
 
     public VirtualPet(String petName) {
@@ -19,8 +18,9 @@ public class VirtualPet {
     }
 
     public void menu() {
-        System.out.println("Say Aloha to your new pet, " + name );
-        System.out.println("Food: " + food + "\n" + "Health: " + health + "\n" + "Bowels: 0 ");
+        System.out.println("\n\nSay Aloha to your new pet, " + name + "\n");
+        stats();
+        System.out.println("\n");
         Scanner menuItems = new Scanner(System.in);
         while(!menuOption.equals("7")) {
             System.out.println("What would you like to do with your vPet? \n \n" +
@@ -30,30 +30,34 @@ public class VirtualPet {
                 "4. Put " + name + " to bed \n" +
                     "5. Use the restroom \n" +
                 "6. Do nothing \n" +
-                "7. Exit ");
+                "7. Exit \n");
             String menuOption = menuItems.next();
-            System.out.println(menuOption);
+//            System.out.println(menuOption);
 
             switch(menuOption) {
                 case "1":
                     isHungery();
-                    crap += 2;
+                    waste += 2;
                     bowels();
-                    System.out.println("Food: " + food);
-                    System.out.println("Bowels: " + crap);
+                    stats();
+                    System.out.println("\n");
                     break;
 //            case "2":
 //                isThirsty();
 //                break;
             case "3":
                 isBored();
-                System.out.println("Food: " + food);
+                increaseThirst();
+                bowels();
+                stats();
+                System.out.println("\n");
                 break;
 //            case "4":
 //                isSleepy();
 //                break;
                 case "5":
                     restroom();
+                    stats();
                     break;
 //            case "6":
 //                break;
@@ -68,7 +72,14 @@ public class VirtualPet {
 
     }
 
-
+    public void stats() {
+        System.out.println("Health: " + health);
+        System.out.println("Food: " + food);
+        System.out.println("Thirst: " + thirst);
+        System.out.println("Waste: " + waste);
+        System.out.println("Boredom: " + boredom);
+        System.out.println("Sleepiness: " + tired);
+    }
 
     public int isHungery() {
         return food += 5;
@@ -76,16 +87,18 @@ public class VirtualPet {
 
     public void bowels() {
 
-        if(crap == 8) {
-            System.out.println("Your pets bowels have reached 8. \nWhen it reaches more than 10 your vPet will die!");
-        } else if (crap > 10) {
-            System.out.println("Your vPet has died from constipation! ");
+        if(waste == 8) {
+            System.out.println("Your pets bowels have reached 8. \nWhen it reaches more than 10 your vPet will die! \n");
+        } else if (waste == 10) {
+            System.out.println("Please don't feed " + name + " before taking " + name + " to the restroom \n");
+        } else if (waste > 10) {
+            System.out.println("Your vPet has died from constipation! \n");
             menuOption.equals("7");
         }
     }
 
     public int restroom() {
-        return crap = 0;
+        return waste = 0;
     }
 
     public int isBored() {
@@ -93,7 +106,25 @@ public class VirtualPet {
     }
 
 
+    public int increaseThirst() {
+        if (thirst == 6) {
+            System.out.println("I am getting a little thirsty, please give me a beverage \n ");
+        } else if (thirst == 10) {
+            System.out.println("I am getting parched and am really thirsty! Please give me a beverage! \n");
+        } else if (thirst > 12) {
+            System.out.println("Your vPet has died due to lack of fluids \n");
+            menuOption.equals("7");
+            System.out.println(menuOption);
+        }
+        return thirst += 2;
+    }
 
+    public int getHealth() {
+        return 0;
+//        if health falls below 50 -> vPet is sick
+//        remove 10 health points if vPet not fed after 10 minutes
+//        if not fed after 5 minutes print "I'm hungry, please feed me!"
+    }
 
 
 
