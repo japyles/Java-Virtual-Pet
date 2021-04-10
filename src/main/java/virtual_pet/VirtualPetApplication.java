@@ -13,14 +13,13 @@ public class VirtualPetApplication {
 
         class Tick extends TimerTask {
             public void run() {
-                System.out.println("Tick tock it's working, yo!");
+                System.out.println("Tick Tock");
             }
         }
-
         Timer timer = new Timer();
         TimerTask task = new Tick();
 
-        timer.schedule(task, 5, 500);
+        timer.schedule(task, 0, 100);
 
     }
 

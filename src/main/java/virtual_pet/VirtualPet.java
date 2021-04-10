@@ -32,35 +32,39 @@ public class VirtualPet {
                 "6. Do nothing \n" +
                 "7. Exit \n");
             String menuOption = menuItems.next();
-//            System.out.println(menuOption);
 
             switch(menuOption) {
                 case "1":
                     isHungery();
                     waste += 2;
                     bowels();
+                    gettingSleepy();
                     stats();
                     System.out.println("\n");
                     break;
-//            case "2":
-//                isThirsty();
-//                break;
-            case "3":
-                isBored();
-                increaseThirst();
-                bowels();
-                stats();
-                System.out.println("\n");
-                break;
-//            case "4":
-//                isSleepy();
-//                break;
+                case "2":
+                    isThirsty();
+                    stats();
+                    break;
+                case "3":
+                    isBored();
+                    increaseThirst();
+                    bowels();
+                    gettingSleepy();
+                    stats();
+                    System.out.println("\n");
+                    break;
+                    case "4":
+                    isSleepy();
+                    stats();
+                    break;
                 case "5":
                     restroom();
                     stats();
                     break;
-//            case "6":
-//                break;
+                case "6":
+                    stats();
+                    break;
                 case "7":
                     break;
                 default:
@@ -119,41 +123,22 @@ public class VirtualPet {
         return thirst += 2;
     }
 
+    public int isThirsty() {
+        return thirst = 0;
+    }
+
+    public int gettingSleepy() {
+        return tired += 2;
+    }
+
+    public int isSleepy() {
+        return tired = 0;
+    }
+
     public int getHealth() {
         return 0;
 //        if health falls below 50 -> vPet is sick
 //        remove 10 health points if vPet not fed after 10 minutes
 //        if not fed after 5 minutes print "I'm hungry, please feed me!"
     }
-
-
-
-
-//    IntStream stream = IntStream.range(1,6);
-//
-//    while(menuOptions != stream && menuOptions != 0) {
-//
-//        switch(menuOptions) {
-//            case 1:
-//                isHunger();
-//                break;
-//            case 2:
-//                isThirsty();
-//                break;
-//            case 3:
-//                isBored();
-//                break;
-//            case 4:
-//                isSleepy();
-//                break;
-//            case 5:
-//                break;
-//            default:
-//                System.out.println("Please choose one of the available options ");
-//        }
-//    }
-//
-//
-//
-
 }
