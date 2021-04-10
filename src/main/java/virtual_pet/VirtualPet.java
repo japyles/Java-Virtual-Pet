@@ -12,6 +12,7 @@ public class VirtualPet {
     private int health = 100;
     private int tired = 0;
     private String menuOption = "0";
+    private int option = 0;
 
     public VirtualPet(String petName) {
         name = petName;
@@ -22,7 +23,7 @@ public class VirtualPet {
         stats();
         System.out.println("\n");
         Scanner menuItems = new Scanner(System.in);
-        while(!menuOption.equals("7")) {
+        while(option != 7) {
             System.out.println("What would you like to do with your vPet? \n \n" +
                 "1. Feed " + name + "\n" +
                 "2. Give " + name + " a drink \n" +
@@ -33,8 +34,10 @@ public class VirtualPet {
                 "7. Exit \n");
             String menuOption = menuItems.next();
 
-            switch(menuOption) {
-                case "1":
+            int option = Integer.parseInt(menuOption);
+
+            switch(option) {
+                case 1:
                     isHungery();
                     waste += 2;
                     bowels();
@@ -42,11 +45,11 @@ public class VirtualPet {
                     stats();
                     System.out.println("\n");
                     break;
-                case "2":
+                case 2:
                     isThirsty();
                     stats();
                     break;
-                case "3":
+                case 3:
                     isBored();
                     increaseThirst();
                     bowels();
@@ -54,21 +57,21 @@ public class VirtualPet {
                     stats();
                     System.out.println("\n");
                     break;
-                    case "4":
+                    case 4:
                     isSleepy();
                     stats();
                     break;
-                case "5":
+                case 5:
                     restroom();
                     stats();
                     break;
-                case "6":
+                case 6:
                     stats();
                     break;
-                case "7":
+                case 7:
                     break;
                 default:
-                    System.out.println("Please choose one of the available options ");
+                    System.out.println("Please choose one of the available options \n");
             }
         }
 
