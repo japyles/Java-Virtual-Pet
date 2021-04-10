@@ -1,6 +1,8 @@
 package virtual_pet;
 
 import java.util.Scanner;
+import java.util.Timer;
+import java.util.TimerTask;
 //import java.util.stream.IntStream;
 
 public class VirtualPet {
@@ -72,6 +74,10 @@ public class VirtualPet {
                     break;
                 default:
                     System.out.println("Please choose one of the available options \n");
+            }
+
+            if (option == 7) {
+                break;
             }
         }
 

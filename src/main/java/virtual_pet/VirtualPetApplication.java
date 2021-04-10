@@ -11,15 +11,15 @@ public class VirtualPetApplication {
         VirtualPet vPet = new VirtualPet("Skye");
         vPet.menu();
 
-        class Tick extends TimerTask {
-            public void run() {
-                System.out.println("Tick Tock");
-            }
-        }
-        Timer timer = new Timer();
-        TimerTask task = new Tick();
-
-        timer.schedule(task, 0, 100);
+//        class Tick extends TimerTask {
+//            public void run() {
+//                System.out.println("Tick Tock");
+//            }
+//        }
+//        Timer timer = new Timer();
+//        TimerTask task = new Tick();
+//
+//        timer.schedule(task, 0, 100);
 
     }
 
